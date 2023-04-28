@@ -37,7 +37,7 @@ https://api.pewds.vercel.app/prothomalo/collection/{name}?start_from=0&per_page=
         import axios from "axios";
 
         // Example request using no paramters.
-        const url = "https://api.pewds.vercel.app/prothomalo/collection/{name}?start_from=0&per_page=15";
+        const url = "https://api.pewds.vercel.app/prothomalo/collection/latest?start_from=0&per_page=15";
         const data = async () => {
             try {
                 const { data } = await axios.get(url);
