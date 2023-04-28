@@ -1,0 +1,93 @@
+---
+title: Fetch Ads 
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Fetch Ads 
+
+Example code is provided for both JavaScript , along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/bikroy/ads/
+```
+
+
+
+## Query Parameters.
+
+
+| Parameter |                                                                           Type                                                                            | Description                                                               | Required? | Default |
+| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------- | :-------: | :-----: |
+|   page   |    Number | Page Number. |    No     |   1   |
+|   categorySlug   |    string | Slug of specific category.Examples: <br></br>`"mobiles"` |    No     |   N/A   |
+|   category   |    Number | Id of specific category.Examples: <br></br>`"229"` |    No     |   N/A   |
+|   locationSlug   |    string | Location Slug of specific category. Examples: <br></br>`"mohammadpur"` `"dhaka"`   |    No     |   N/A   |
+|   search   |    string |  The search query; i.e. the name of the ads you are looking for.    |    No     |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Example request using no paramters.
+        const url = "https://api.pewds.vercel.app/bikroy/ads?categorySlug=mobiles&locationSlug=mohammadpur";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+        "title": "string",
+        "id": "string",
+        "uploadedAt": "string",
+        "topics": [
+            "string"
+        ],
+        "preview": {
+            "intro": "string",
+            "full": "string"
+        },
+        "thumbnail": "string",
+        "url": "string"
+    },
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

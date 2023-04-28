@@ -1,0 +1,81 @@
+---
+title: Fetch Product Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Fetch Product Info
+
+ Example code is provided for both JavaScript , along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/daraz/product/:id
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                             | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string |  This is the ID of the product that will be returned in the function.  Example: <br></br>`"266816450"`   <br></br>|    Yes    |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+       
+        const url = "https://api.pewds.vercel.app/daraz/product/223866897";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+      id: "string",
+      title: "string",
+      uploadedAt: "string",
+      intro: "string",
+      description: "string",
+      thumbnail: "string",
+      url: "string"
+    }
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

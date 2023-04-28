@@ -1,0 +1,106 @@
+---
+title: Tv & Movie | Movie Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Movie & Tv Info
+
+Example code is provided for both JavaScript, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/movie/info/{type}/{id}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description         | Required? | Default |
+| :-------: | :----: | ------------------- | :-------: | :-----: |
+|   type    | string | The media type of the tv / movie; i.e.. `tv`  `movie`|    Yes    |  `N/A`  |
+|    id     | string | The show / movie id `watch-titanic-68827` |    Yes    |  `N/A`  |
+
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "movie/watch-titanic-68827" and the query of "movie"
+        const url = "https://api.pewds.vercel.app/movie/info/movie/watch-titanic-68827";
+        const movie = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return movie;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+         // Using the example id of "tv/watch-money-heist-39409" and the query of "tv"
+        const url2 = "https://api.pewds.vercel.app/movie/info/tv/watch-money-heist-39409";
+        const tv = async () => {
+            try {
+                const { data } = await axios.get(url2);
+                return tv;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(movie , tv);
+        ```
+        
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "cover": "string",
+      "recommendations": "IMovieResult[]",
+      "genres": "string[]",
+      "description": "string",
+      "rating": "number",
+      "status": "MediaStatus",
+      "duration": "string",
+      "production": "string",
+      "casts": "string[]",
+      "tags": "string[]",
+      "totalEpisodes": "number",
+      "seasons": "{ season: number; image?: string; episodes: IMovieEpisode[] }[]",
+      "episodes": "IMovieEpisode[]",
+  }
+  ```
+  </Tab>
+
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+
+  <Tab>
+
+    **MIME Type:** `application/json`
+    ```json copy=false
+    {
+      "message": "string"
+    }
+    ```
+
+  </Tab>
+</Tabs>

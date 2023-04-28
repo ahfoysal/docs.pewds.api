@@ -1,0 +1,94 @@
+---
+title: Fetch search result
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Fetch search result
+
+Example code is provided for both JavaScript , along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/daraz/search/{name}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+| name | string   | The search query; i.e. the name of the product you are looking for. |    Yes    |   N/A   |
+
+
+## Query Parameters (Upcoming).
+
+
+| Parameter |                                                                           Type                                                                            | Description                                                               | Required? | Default |
+| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------- | :-------: | :-----: |
+|   page   |    Number | Page Number. |    No     |   1   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Example request using no paramters.
+        const url = "https://api.pewds.vercel.app/daraz/search/shirt";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+        "title": "string",
+        "id": "string",
+        "uploadedAt": "string",
+        "topics": [
+            "string"
+        ],
+        "preview": {
+            "intro": "string",
+            "full": "string"
+        },
+        "thumbnail": "string",
+        "url": "string"
+    },
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

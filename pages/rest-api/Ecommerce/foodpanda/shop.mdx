@@ -1,0 +1,91 @@
+---
+title: Fetch Shop Detail
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Fetch Shop Detail Info 
+
+Example code is provided for both JavaScript , along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/foodpanda/shop/{id}
+```
+
+## path Parameters.
+
+
+
+| Parameter |                                                                           Type                                                                            | Description                                                               | Required? | Default |
+| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------- | :-------: | :-----: |
+|   id   |    string | ID of selected Shop. |    Yes     |   N/A   |
+
+## Query Parameters.
+
+
+
+| Parameter |                                                                           Type                                                                            | Description                                                               | Required? | Default |
+| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------- | :-------: | :-----: |
+|   category_id   |    string | Get Items from specific category : <br></br>`"14cc2622-069a-45e1-bfb6-dc96735a531b"`   |    No     |   N/A   |
+
+
+
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Example request using no paramters
+        const url = "https://api.pewds.vercel.app/foodpanda/shop/zrir?category_id=14cc2622-069a-45e1-bfb6-dc96735a531b";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+ 
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+  {
+    "total": string,
+    "items": [
+      {
+        
+      },
+      {
+        
+      }
+    ]
+  }
+]
+  ```
+  </Tab>
+  <Tab>
+  ** Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+
+</Tabs>

@@ -1,0 +1,65 @@
+---
+title: Tv | Recent 
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Tv | Recent 
+
+ Example code is provided for both JavaScript, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/tv/recent
+```
+
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.pewds.vercel.app/tv/recent";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+  "currentPage": 1,
+  "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "type": "string",
+        "rating": "number",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>

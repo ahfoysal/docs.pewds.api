@@ -1,0 +1,11 @@
+{
+   "movie": {
+  "title": "Movie & Tv Show",
+  "theme": { "collapsed": true }
+},
+  "anime": {
+    "title": "Anime",
+    "theme": { "collapsed": true }
+  }
+
+}

@@ -1,0 +1,14 @@
+
+
+
+{ 
+"categories": "Categories",
+  "category": "Category",
+  "product": " Product",
+  "review": "Product Review",
+  "qna": "Product QnA",
+  "related": "Related Product",
+  "search": "Search",
+  "flashsale": "Upcoming"
+
+}

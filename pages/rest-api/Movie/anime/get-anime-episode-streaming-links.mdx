@@ -1,0 +1,142 @@
+---
+title: Anime | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Episode Streaming Links
+
+Example code is provided for both JavaScript, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/anime/watch/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+| episodeId | string | The ID of the selected episode |    Yes    |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of  'spy-x-family-episode-1',
+        */
+        const url = "https://api.pewds.vercel.app/anime/watch/spy-x-family-episode-1";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
+      },
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+         "year": "number",
+         "month": "number",
+         "day": "number"
+        },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string",
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string",
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer",
+      },
+      "episodes": {
+        "id": "string",
+        "title": "string",
+        "chapter": "string",
+      }
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }   
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  } 
+  ```
+  </Tab>
+</Tabs>

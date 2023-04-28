@@ -1,0 +1,85 @@
+---
+title: Search News
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search  
+
+Example code is provided for both JavaScript , along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/prothomalo/search/{query}?start_from=0&per_page=15
+```
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+| query | string | The search query; i.e. the title of the news you are looking for. |    Yes    |   N/A   |
+
+
+## Query Parameters
+
+| Parameter |                                                                           Type                                                                            | Description                                                               | Required? | Default |
+| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------- | :-------: | :-----: |
+|   start_from   |    Number | News Start From. |    No     |   0   |
+|   per_page|    Number | News Per Page. |    No     |   15   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Example request using no paramters
+        const url = "https://api.pewds.vercel.app/prothomalo/search/sheikh hasina?start_from=0&per_page=15";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+ 
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+  {
+    "total": string,
+    "items": [
+      {
+        
+      },
+      {
+        
+      }
+    ]
+  }
+]
+  ```
+  </Tab>
+  <Tab>
+  ** Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+
+</Tabs>

@@ -1,0 +1,19 @@
+{
+  "index": "Introduction",
+  "list-of-providers": "List of Providers",
+  "faq": "FAQ",
+  "rest-api": "API",
+  "node-library": "Node Library",
+  "license": {
+    "title": "License 📜",
+    "type": "page",
+    "href": "https://raw.githubusercontent.com/LICENSE",
+    "newWindow": true
+  },
+  "contact": {
+    "title": "Contact ✉️",
+    "type": "page",
+    "href": "mailto:pewds.me@proton.me",
+    "newWindow": true
+  }
+}

@@ -1,0 +1,77 @@
+---
+title: Movie & Tv | Search
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Movie & Tv | Search
+
+ Example code is provided for both JavaScript, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/movie/search/{query}?page={page}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type   | Description                           | Required? | Default |
+| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
+|   page    | integer | The page number of results to return. |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "flash", and looking at the first page of results.
+        const url = "https://api.pewds.vercel.app/movie/search/flash";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+  "currentPage": 1,
+  "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "type": "string",
+        "rating": "number",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>

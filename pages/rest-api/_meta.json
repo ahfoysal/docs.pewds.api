@@ -1,0 +1,7 @@
+{
+  "start": "Get Started",
+  "News": { "title": "News", "theme": { "collapsed": true } },
+  "Ecommerce": { "title": "Ecommerce", "theme": { "collapsed": true } },
+  "Movie": { "title": "Movie , Tv & Anime", "theme": { "collapsed": true } }
+}
+

@@ -1,0 +1,108 @@
+---
+title: Movie & Tv | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Movie & Tv Episode Streaming Links
+
+Example code is provided for both JavaScript, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.pewds.vercel.app/movie/watch/{type}/{id}/{episodeId}
+```
+## Alternative
+```
+https://api.pewds.vercel.app/movie/watchalt/{type}/{id}/{episodeId}
+```
+## Path Parameters
+
+| Parameter |  Type  | Description                                                | Required? | Default |
+| :-------: | :----: | ---------------------------------------------------------- | :-------: | :-----: |
+|   type    | string | The media type of the tv / movie; i.e.. `tv`  `movie`|    Yes    |  `N/A`  |
+|    id     | string | The show / movie id `watch-the-flash-39535` |    Yes    |  `N/A`  |
+| episodeId | string | The ID of the selected episode    `2899` |    Yes    |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript"]}>
+  <Tab>
+     <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "movie/watch-titanic-68827" and the episodeId of  a "movie" "68827".
+        const url = "https://api.pewds.vercel.app/movie/watch/movie/watch-titanic-68827/68827";
+        const movie = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return movie;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+         // Using the example id of "tv/watch-money-heist-39409" and the episodeId of  a "tv" "24932"
+        const url2 = "https://api.pewds.vercel.app/movie/watch/tv/watch-money-heist-39409/24932";
+        const tv = async () => {
+            try {
+                const { data } = await axios.get(url2);
+                return tv;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(movie , tv);
+        ```
+        
+    </>
+
+  </Tab>
+ 
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "headers": {
+          "Referer": "string"
+      },
+      "sources": [
+          {
+          "url": "string",
+          "quality": "string",
+          "isM3U8": true
+          }
+      ],
+      "subtitles": [
+          {
+          "url": "string",
+          "lang": "string"
+          }
+      ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }   
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  } 
+  ```
+  </Tab>
+</Tabs>

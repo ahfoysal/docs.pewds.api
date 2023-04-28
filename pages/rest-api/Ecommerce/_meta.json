@@ -1,0 +1,15 @@
+{
+  "daraz": {
+    "title": "Daraz",
+    "theme": { "collapsed": true }
+  },
+  "bikroy": {
+    "title": "Bikroy",
+    "theme": { "collapsed": true }
+  },
+  
+  "foodpanda": {
+    "title": "Foodpanda",
+    "theme": { "collapsed": true }
+  }
+}
