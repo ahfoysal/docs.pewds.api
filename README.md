@@ -21,4 +21,4 @@ const data = async () => {
 console.log(data);
 ```
 
-Do you want to know more? Head to the [`Getting Started`](https://docs.pewds.vercel.app/rest-api/startd).
+Do you want to know more? Head to the [`Getting Started`](https://docs.pewds.vercel.app/rest-api/start).
